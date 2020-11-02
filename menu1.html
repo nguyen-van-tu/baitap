@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+</head>
+<body>
+<!--bai1-->
+<div>
+    <h2> Tính số lẻ dương</h2>
+    <input type="text" id = 'so1'>
+    <button onclick="nhap1 ()"> check </button>
+    <p id = 'ketqua1'></p>
+</div>
+<!--bai2-->
+<div>
+    <h2> kiểm tra SNT </h2>
+    <input type="text" id = 'so2'>
+    <button onclick=" nhap2() ">check</button>
+    <p id ='ketqua2'></p>
+</div>
+<!--bai3-->
+<div>
+    <h2> Hiển thị danh sách số nguyên tố đầu tiên </h2>
+    <input type="text" id = 'so3'>
+    <button onclick=" nhap3() "> check </button>
+    <p id="ketqua3"></p>
+</div>
+<!--bai4-->
+<div>
+    <h2>Nhâp từng phần tử mảng</h2>
+    <input type="number" id="so4">
+    <button onclick="themSo()">  Add  </button>
+</div>
+<!--bai5-->
+<div>
+    <h2>Hiển thị mảng vừa nhập</h2>
+    <button onclick="hienthi()">Hiển thị</button>
+</div>
+<!--bai6-->
+<!--...-->
+<!--bai7-->
+<div>
+    <h2>Kiểm tra N có tồn tại trong mảng</h2>
+    <button id="checkNumber" onclick="checkNumber()">Kiểm tra</button>
+</div>
+
+<script>
+    //bài 1
+    function nhap1()
+    {
+        let N = document.getElementById('so1').value;
+        if (N%2>0){
+            document.getElementById('ketqua1').innerHTML = N +' là số lẻ dương'
+        }else
+            document.getElementById('ketqua1').innerHTML = N + ' ko phải là số lẻ dương'
+    }
+    //bài 2
+    function nhap2()
+    {
+        let N = document.getElementById('so2').value;
+        function check_SNT (N) {
+            let flag = true;
+            if (N < 2) {
+                flag = false;
+            } else {
+                for (i = 2; i < N; i++) {
+                    if (N % i == 0) {
+                        flag = false;
+                        break;
+                    }
+                }
+            }
+            if (flag == true) {
+                document.getElementById('ketqua2').innerHTML = N + '  là số nguyên tố'
+            } else {
+                document.getElementById('ketqua2').innerHTML = N + '  không phải là số nguyên tố'
+            }
+        }
+        check_SNT(N)
+    }
+    // bài 3
+    function nhap3() {
+        let N = document.getElementById('so3').value;
+        function checkPrimer(number) {
+            if (number < 2) return false;
+            if (number === 2) return true;
+            if (number % 2 == 0) return false;
+            for (let i = 2; i * i <= number; i++) {
+                if (number % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        let count = 0;
+        let i = 0;
+        while (count < N) {
+            if (checkPrimer(i)) {
+                document.write(i + "\n");
+                count++;
+            }
+            i++;
+        }
+    }
+    //bài 4
+    let arr = [];
+    function themSo(){
+        let value = +document.getElementById("so4").value;
+        arr.push(value);
+        document.getElementById("so4").value = "";
+        console.log(arr);
+    }
+
+    // bai 5
+    function hienthi(){
+        document.write(arr);
+    }
+    // bai6
+    // ...
+    // bai7
+    function checkNumber() {
+        num = +prompt("Nhập số cần kiểm tra:");
+        for (let i = 0; i < arr.length; i++) {
+            if (num === arr[i]) {
+                document.write("Có")
+                break;
+            } else {
+                document.write("Không")
+            }
+        }
+    }
+</script>
+</body>
+</html>
