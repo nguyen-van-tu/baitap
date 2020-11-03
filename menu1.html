@@ -28,23 +28,37 @@
 </div>
 <!--bai4-->
 <div>
-    <h2>Nhâp từng phần tử mảng</h2>
+    <h2>Nhập từng phần tử mảng</h2>
     <input type="number" id="so4">
     <button onclick="themSo()">  Add  </button>
 </div>
 <!--bai5-->
 <div>
     <h2>Hiển thị mảng vừa nhập</h2>
-    <button onclick="hienthi()">Hiển thị</button>
+     <button onclick="hienThi()">Hiển thị</button>
+    <p id = 'hienthi'></p>
 </div>
 <!--bai6-->
-<!--...-->
+<div>
+    <h2>Liệt kê danh sác các số nguyên tố</h2>
+    <button onclick="printPrimeList()">List Prime</button>
+</div>
 <!--bai7-->
 <div>
     <h2>Kiểm tra N có tồn tại trong mảng</h2>
-    <button id="checkNumber" onclick="checkNumber()">Kiểm tra</button>
+    <button id="checkNum" onclick="checkNumber()">Kiểm tra</button>
 </div>
+<!--bai8-->
+<div>
+    <h2>Xoá N khỏi mảng</h2>
+    <button id="delete" onclick="deleteNumber()">Xóa</button>
 
+</div>
+<!--bai9-->
+<div>
+    <h2>Sắp xếp các phần tử của mảng tăng dần</h2>
+    <button id="sortArray" onclick="sortArray()">Sắp xếp</button>
+</div>
 <script>
     //bài 1
     function nhap1()
@@ -113,22 +127,49 @@
     }
 
     // bai 5
-    function hienthi(){
-        document.write(arr);
+    function hienThi(){
+     alert(arr)
     }
     // bai6
-    // ...
+    function printPrimeList() {
+        for (let i = 0; i < arr.length; i++) {
+            if(isPrime(arr[i])){
+                document.write(arr[i]+", ");
+            }
+        }
+        arr.forEach(item => {
+            if (isPrime(item)) {
+               alert(item + ", ");
+            }
+        })
+    }
     // bai7
     function checkNumber() {
         num = +prompt("Nhập số cần kiểm tra:");
         for (let i = 0; i < arr.length; i++) {
             if (num === arr[i]) {
-                document.write("Có")
+                document.getElementById("checkNum").innerHTML = "Có";
                 break;
             } else {
-                document.write("Không")
+                document.getElementById("checkNum").innerHTML = "Không";
             }
         }
+    }
+    // bai8
+    function deleteNumber() {
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === num) {
+                arr.splice(i);
+            }
+        }
+        document.write(arr );
+    }
+    // bai9
+    function sortArray() {
+        arr.sort(function (a, b) {
+            return a - b;
+        });
+        alert(arr) ;
     }
 </script>
 </body>
